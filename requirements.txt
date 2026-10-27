@@ -4,3 +4,13 @@ geopandas
 folium
 streamlit-folium
 plotly
+libpysal
+esda
+spreg
+statsmodels
+matplotlib
+seaborn
+mapclassify
+scipy
+splot
+requests
