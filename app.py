@@ -299,12 +299,11 @@ col_y, col_v = st.columns(2)
 with col_y:
     year_selected = st.selectbox("Año", options=years_list, index=len(years_list)-1, disabled=not st.session_state.ready)
 with col_v:
-    var_selected = st.selectbox(
-        "Variable",
-        options=["Producción (t)", "Área sembrada (ha)", "Rendimiento (t/ha)"],
-        value="Producción (t)",
-        disabled=not st.session_state.ready
-    )
+  var_selected = st.selectbox(
+    "Variable",
+    options=["Producción (t)", "Área sembrada (ha)", "Rendimiento (t/ha)"],
+    disabled=not st.session_state.ready
+)
 
 st.divider()
 
