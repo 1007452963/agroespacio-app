@@ -1,24 +1,5 @@
-import sys, subprocess, importlib, warnings, zipfile, io, requests, tempfile, os
+import warnings, zipfile, io, requests, tempfile, os
 from pathlib import Path
-
-def _install(pkg, imp=None):
-    imp = imp or pkg.split("==")[0].split("[")[0]
-    try:
-        importlib.import_module(imp)
-    except ImportError:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", pkg])
-
-for pkg, imp in [
-    ("libpysal", "libpysal"), ("esda", "esda"),
-    ("spreg", "spreg"), ("geopandas", "geopandas"), ("statsmodels", "statsmodels"),
-    ("matplotlib", "matplotlib"), ("seaborn", "seaborn"), ("folium", "folium"),
-    ("streamlit_folium", "streamlit_folium"),
-    ("mapclassify", "mapclassify"), ("numpy", "numpy"), ("pandas", "pandas"),
-    ("scipy", "scipy"), ("splot", "splot"), ("plotly", "plotly"), ("requests", "requests"),
-]:
-    _install(pkg, imp)
-
-warnings.filterwarnings("ignore")
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -316,11 +297,11 @@ else:
 
 col_y, col_v = st.columns(2)
 with col_y:
-    year_selected = st.selectbox("Año", choices=years_list, index=len(years_list)-1, disabled=not st.session_state.ready)
+    year_selected = st.selectbox("Año", options=years_list, index=len(years_list)-1, disabled=not st.session_state.ready)
 with col_v:
     var_selected = st.selectbox(
         "Variable",
-        choices=["Producción (t)", "Área sembrada (ha)", "Rendimiento (t/ha)"],
+        options=["Producción (t)", "Área sembrada (ha)", "Rendimiento (t/ha)"],
         value="Producción (t)",
         disabled=not st.session_state.ready
     )
